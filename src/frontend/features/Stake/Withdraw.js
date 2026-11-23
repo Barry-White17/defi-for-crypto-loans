@@ -87,7 +87,7 @@ const Withdraw = () => {
   if (!active) {
     return <Typography>Please connect to a wallet to stake</Typography>;
   } else if (Object.keys(stakedToken).length === 0) {
-    return <Typography>Please provide valid "pool" search parameter in URL</Typography>
+    return <Typography>Please provide valid pool search parameter in URL</Typography>
   }
 
   return <Grid container>
