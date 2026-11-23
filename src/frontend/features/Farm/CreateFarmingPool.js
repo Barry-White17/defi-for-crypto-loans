@@ -167,7 +167,7 @@ const CreateFarmingPool = () => {
       <TokenSelectModal open={openModalStaked}
         handleClose={() => setOpenModalStaked(false)}
         selectToken={handleSelectToken}
-        customTokens={Array.from(liquidityPools.entries()).map((value, i) => {
+        customTokens={Array.from(liquidityPools.entries()).map((value) => {
           return {
             "address": value[0],
             "name": `LP Token for ${value[1].tokenA.symbol} and ${value[1].tokenB.symbol}`,
