@@ -84,7 +84,7 @@ const SupplyStakingReward = () => {
   if (!active) {
     return <Typography>Please connect to a wallet to supply reward</Typography>;
   } else if (Object.keys(rewardToken).length === 0) {
-    return <Typography>Please provide valid "pool" search parameter in URL</Typography>
+    return <Typography>Please provide valid pool search parameter in URL</Typography>
   }
 
   return <Grid container>
