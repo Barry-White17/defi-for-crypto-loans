@@ -418,7 +418,7 @@ const Swap = () => {
         </Grid>
         <Grid container justifyContent="center" spacing="10" sx={{ my: 1 }}>
           <Grid item>
-            <Typography sx={theme.component.hintText}>You'll get</Typography>
+            <Typography sx={theme.component.hintText}>You will get</Typography>
             <Button sx={theme.component.selectButton}
               endIcon={<KeyboardArrowDownIcon />}
               onClick={() => { setOpenModal(true); setTokenIndex(indexTokenB); }}>
