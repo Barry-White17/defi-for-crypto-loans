@@ -9,6 +9,7 @@ import { useWeb3React } from "@web3-react/core";
 import { injectedConnector, walletConnectConnector } from "../Wallet";
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import PropTypes from 'prop-types'
 
 const drawerWidth = 240;
 const navItems = [{
@@ -145,5 +146,7 @@ const Layout = ({ children }) => {
     </Box>
   </Box>;
 }
-
+Layout.propTypes = {
+    children: PropTypes.node.isRequired,
+}
 export default Layout;
