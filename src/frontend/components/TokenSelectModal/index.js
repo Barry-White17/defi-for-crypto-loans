@@ -12,6 +12,7 @@ import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { SuppotedTokens } from "../../utils/Tokens";
 import { getTokenInfo } from '../../utils/Helper';
 import WETH from '../../contracts/WETH-address.json'
+import PropTypes from 'prop-types'
 
 const TokenSelectModal = ({ open, handleClose, selectToken, erc20Only, customTokens }) => {
   const [tokens, setTokens] = useState([]);
@@ -64,5 +65,11 @@ const TokenSelectModal = ({ open, handleClose, selectToken, erc20Only, customTok
     </DialogContent>
   </Dialog>
 }
-
+TokenSelectModal.propTypes= {
+  open: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  selectToken: PropTypes.func.isRequired,
+  erc20Only: PropTypes.bool.isRequired,
+  customTokens: PropTypes.array.isRequired
+}
 export default TokenSelectModal;
