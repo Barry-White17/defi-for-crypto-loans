@@ -1,12 +1,16 @@
 # Sample Hardhat Project: DeFi for Crypto loans
 
 # Link to vercel deployed frontend
+https://defi-for-crypto-loans.vercel.app
 
 # Link to github repo
-
+https://github.com/Barry-White17/defi-for-crypto-loans
 ### Info
 
-- Note should be taken that the project's UI is just wireframe now, to showcase a working architecture.
+* Should be noted;
+  
+- That the project's UI is just wireframe now, to showcase a working architecture.
+- That the project is self initiated to showcase competence
 
 - A production build is to be made with ShadcnUI and TailwindCss
 
