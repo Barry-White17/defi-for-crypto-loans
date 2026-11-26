@@ -24,9 +24,9 @@ const Withdraw = () => {
     try {
       const assetPool = new ethers.Contract(AssetPoolAddress.address, AssetPoolABI.abi, library.getSigner());
       let _balance = await assetPool.getUserCompoundedLiquidityBalance(account, tokenObject.address);
-      _balance = Number(ethers.utils.formatUnits(_balance, tokenObject.decimals));
+      _balance = Number(ethers.formatUnits(_balance, tokenObject.decimals));
       const poolInfo = await assetPool.getPool(tokenObject.address);
-      let _available = Number(ethers.utils.formatUnits(poolInfo.availableLiquidity, tokenObject.decimals));
+      let _available = Number(ethers.formatUnits(poolInfo.availableLiquidity, tokenObject.decimals));
       setDepositBalance(Math.min(_available, _balance));
     } catch (error) {
       toast.error("Cannot get deposit balance!");
@@ -78,7 +78,7 @@ const Withdraw = () => {
         const shareBalance = await getShareBalance(assetPool, token.address);
         tx = await assetPool.withdrawByShare(token.address, shareBalance);
       } else {
-        tx = await assetPool.withdrawByAmount(token.address, ethers.utils.parseUnits(toString(amount), token.decimals));
+        tx = await assetPool.withdrawByAmount(token.address, ethers.parseUnits(toString(amount), token.decimals));
       }
       await tx.wait();
       toast.info(`Withdraw token successfully! Transaction hash: ${tx.hash}`);
