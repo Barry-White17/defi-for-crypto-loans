@@ -74,11 +74,11 @@ export const isETH = token => {
 
 // Format BigNumber interst to percentage
 export const formatInterest = interest => {
-  return (Number(ethers.utils.formatEther(interest)) * 100).toFixed(2) + "%";
+  return (Number(ethers.formatEther(interest)) * 100).toFixed(2) + "%";
 }
 
 export const formatEtherOrNA = value => {
-  return value ? Number(ethers.utils.formatEther(value)).toFixed(2) : 'N/A';
+  return value ? Number(ethers.formatEther(value)).toFixed(2) : 'N/A';
 }
 
 export const boolOrNA = value => {
