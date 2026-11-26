@@ -94,7 +94,7 @@ const Deposit = () => {
     setLoading(true);
     try {
       const stakingPool = new ethers.Contract(stakingPoolAddress, StakingPoolABI, library.getSigner());
-      const tx = await stakingPool.deposit(ethers.utils.parseUnits(toString(amount), stakedToken.decimals));
+      const tx = await stakingPool.deposit(ethers.parseUnits(toString(amount), stakedToken.decimals));
       await tx.wait();
       toast.info(`Deposit token successfully! Transaction hash: ${tx.hash}`);
       setAmount(0);
