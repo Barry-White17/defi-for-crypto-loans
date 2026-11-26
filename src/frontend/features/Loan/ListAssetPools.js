@@ -121,16 +121,16 @@ const ListAssetPools = () => {
           <AccordionDetails>
             <Grid container spacing={2}>
               <Grid item md={6}>
-                Total Liquidity: {Number(ethers.utils.formatUnits(pool.totalLiquidity, pool.assetToken.decimals)).toFixed(4)}
+                Total Liquidity: {Number(ethers.formatUnits(pool.totalLiquidity, pool.assetToken.decimals)).toFixed(4)}
               </Grid>
               <Grid item md={6}>
-                Available Liquidity: {Number(ethers.utils.formatUnits(pool.availableLiquidity, pool.assetToken.decimals)).toFixed(4)}
+                Available Liquidity: {Number(ethers.formatUnits(pool.availableLiquidity, pool.assetToken.decimals)).toFixed(4)}
               </Grid>
               <Grid item md={6}>
-                Lent Balance : {Number(ethers.utils.formatUnits(pool.liquidityBalance, pool.assetToken.decimals)).toFixed(4)}
+                Lent Balance : {Number(ethers.formatUnits(pool.liquidityBalance, pool.assetToken.decimals)).toFixed(4)}
               </Grid>
               <Grid item md={6}>
-                Borrowed Balance: {Number(ethers.utils.formatUnits(pool.BorrowBalance, pool.assetToken.decimals)).toFixed(4)}
+                Borrowed Balance: {Number(ethers.formatUnits(pool.BorrowBalance, pool.assetToken.decimals)).toFixed(4)}
               </Grid>
             </Grid>
             <Grid container spacing={2} sx={{ mt: 1 }}>
