@@ -27,10 +27,10 @@ const Repay = () => {
     try {
       const tokenContract = new ethers.Contract(tokenObject.address, ERC20ABI, library.getSigner());
       let _balance = await tokenContract.balanceOf(account);
-      _balance = Number(ethers.utils.formatUnits(_balance, tokenObject.decimals));
+      _balance = Number(ethers.formatUnits(_balance, tokenObject.decimals));
       const assetPool = new ethers.Contract(AssetPoolAddress.address, AssetPoolABI.abi, library.getSigner());
       const userPoolData = await assetPool.getUserPoolData(account, tokenObject.address);
-      const _compoundBorrow = Number(ethers.utils.formatUnits(userPoolData.compoundedBorrowBalance));
+      const _compoundBorrow = Number(ethers.formatUnits(userPoolData.compoundedBorrowBalance));
       setPayoffAmount(_compoundBorrow);
       setMaxRepayAmount(Math.min(_compoundBorrow, _balance));
     } catch (error) {
@@ -43,7 +43,7 @@ const Repay = () => {
     try {
       const tokenContract = new ethers.Contract(tokenObject.address, ERC20ABI, library.getSigner());
       let _allow = await tokenContract.allowance(account, AssetPoolAddress.address);
-      setAllow(Number(ethers.utils.formatUnits(_allow, tokenObject.decimals)));
+      setAllow(Number(ethers.formatUnits(_allow, tokenObject.decimals)));
     } catch (error) {
       toast.error("Cannot get allowance for token!");
       console.error(error);
@@ -85,7 +85,7 @@ const Repay = () => {
     setLoading(true);
     try {
       const tokenContract = new ethers.Contract(token.address, ERC20ABI, library.getSigner());
-      const allowAmount = ethers.utils.parseUnits(toString(amount * 1.1), token.decimals);
+      const allowAmount = ethers.parseUnits(toString(amount * 1.1), token.decimals);
       const tx = await tokenContract.approve(AssetPoolAddress.address, allowAmount);
       await tx.wait()
       toast.info("Deposit amount is approved!");
@@ -118,7 +118,7 @@ const Repay = () => {
         const borrowedSharesAmount = await getBorrowedShareBalance(assetPool, token.address);
         tx = await assetPool.repayByShare(token.address, borrowedSharesAmount);
       } else {
-        tx = await assetPool.repayByAmount(token.address, ethers.utils.parseUnits(toString(amount), token.decimals));
+        tx = await assetPool.repayByAmount(token.address, ethers.parseUnits(toString(amount), token.decimals));
       }
       await tx.wait();
       toast.info(`Repay token successfully! Transaction hash: ${tx.hash}`);
