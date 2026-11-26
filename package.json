@@ -39,12 +39,6 @@
     "mine": "npx hardhat mine $npm_config_blocks --network",
     "price-oracle-update": "npx hardhat run scripts/priceOracleUpdate.js --network"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
