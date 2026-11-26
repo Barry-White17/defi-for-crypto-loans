@@ -25,7 +25,7 @@ const Deposit = () => {
     try {
       const tokenContract = new ethers.Contract(tokenObject.address, ERC20ABI, library.getSigner());
       const _balance = await tokenContract.balanceOf(account);
-      setBalance(Number(ethers.utils.formatUnits(_balance, tokenObject.decimals)));
+      setBalance(Number(ethers.formatUnits(_balance, tokenObject.decimals)));
     } catch (error) {
       toast.error("Cannot get token balance for deposit!");
       console.error(error);
@@ -36,7 +36,7 @@ const Deposit = () => {
     try {
       const tokenContract = new ethers.Contract(tokenObject.address, ERC20ABI, library.getSigner());
       let _allow = await tokenContract.allowance(account, AssetPoolAddress.address);
-      setAllow(Number(ethers.utils.formatUnits(_allow, tokenObject.decimals)));
+      setAllow(Number(ethers.formatUnits(_allow, tokenObject.decimals)));
     } catch (error) {
       toast.error("Cannot get allowance for token!");
       console.error(error);
@@ -71,7 +71,7 @@ const Deposit = () => {
     setLoading(true);
     try {
       const tokenContract = new ethers.Contract(token.address, ERC20ABI, library.getSigner());
-      const allowAmount = ethers.utils.parseUnits(toString(amount), token.decimals);
+      const allowAmount = ethers.parseUnits(toString(amount), token.decimals);
       const tx = await tokenContract.approve(AssetPoolAddress.address, allowAmount);
       await tx.wait()
       toast.info("Deposit amount is approved!");
@@ -87,7 +87,7 @@ const Deposit = () => {
     setLoading(true);
     try {
       const assetPool = new ethers.Contract(AssetPoolAddress.address, AssetPoolABI.abi, library.getSigner());
-      const tx = await assetPool.deposit(token.address, ethers.utils.parseUnits(toString(amount), token.decimals));
+      const tx = await assetPool.deposit(token.address, ethers.parseUnits(toString(amount), token.decimals));
       await tx.wait();
       toast.info(`Deposit token successfully! Transaction hash: ${tx.hash}`);
       setAmount(0);
