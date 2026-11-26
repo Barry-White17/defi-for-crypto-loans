@@ -217,7 +217,7 @@ const Swap = () => {
       let max = Number.MIN_SAFE_INTEGER;
       let _bestPath = null;
       for (const path of paths) {
-        const _amount = ethers.utils.parseUnits(toString(amount), tokenA.decimals);
+        const _amount = ethers.parseUnits(toString(amount), tokenA.decimals);
         const amounts = await ammRouter.getAmountsOut(_amount, path);
         const _amountB = Number(ethers.formatUnits(amounts[amounts.length - 1], tokenB.decimals));
         if (_amountB > max) {
