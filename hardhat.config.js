@@ -1,6 +1,7 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 require("./scripts/mine");
+require("@nomicfoundation/hardhat-verify");
 
 const SEPOLIA_API_URL = process.env.API_URL;
 const SEPOLIA_PRIVATE_KEY = process.env.PRIVATE_KEY;
@@ -28,9 +29,10 @@ module.exports = {
       accounts: [SEPOLIA_PRIVATE_KEY],
     },
   }, 
-  verify: {
-    etherscan: {
-      apiKey: ETHERSCAN_API_KEY,
-    },
+  etherscan: {
+    apiKey: ETHERSCAN_API_KEY,
   },
+  sourcify: {
+    enabled: false
+  }
 };
