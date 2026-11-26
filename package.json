@@ -19,7 +19,7 @@
     "proptypes": "^1.1.0",
     "buffer": "^6.0.3",
     "chai": "^4.3.7",
-    "ethers": "^5.7.1",
+    "ethers": "^6",
     "json-rpc-engine": "^6.1.0",
     "material-ui-popup-state": "^5.0.5",
     "react": "^18.2.0",
@@ -58,10 +58,8 @@
     ]
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^2.0.1",
-    "eslint": "^10.15.0",
-    "eslint-config-prettier": "^10.1.8",
-    "hardhat": "^2.12.6",
-    "prettier": "^3.10.1"
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.14",
+    "hardhat": "^2.12.6"
   }
 }
