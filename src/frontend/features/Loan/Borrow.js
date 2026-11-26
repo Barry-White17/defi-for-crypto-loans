@@ -26,7 +26,7 @@ const Borrow = () => {
       const tokenPrice = await assetPool.getPriceInWETH(tokenObject.address);
       const poolInfo = await assetPool.getPool(tokenObject.address);
       let _quota = Number(userInfo.totalCollateralValue.sub(userInfo.totalBorrowedValue).div(tokenPrice));
-      let _available = Number(ethers.utils.formatUnits(poolInfo.availableLiquidity, tokenObject.decimals));
+      let _available = Number(ethers.formatUnits(poolInfo.availableLiquidity, tokenObject.decimals));
       setBorrowableQuota(Math.min(_available, _quota));
     } catch (error) {
       toast.error("Cannot get quota for current user!");
@@ -68,7 +68,7 @@ const Borrow = () => {
     setLoading(true);
     try {
       const assetPool = new ethers.Contract(AssetPoolAddress.address, AssetPoolABI.abi, library.getSigner());
-      const tx = await assetPool.borrow(token.address, ethers.utils.parseUnits(toString(amount), token.decimals));
+      const tx = await assetPool.borrow(token.address, ethers.parseUnits(toString(amount), token.decimals));
       await tx.wait();
       toast.info(`Token borrowed successfully! Transaction hash: ${tx.hash}`);
       setAmount(0);
